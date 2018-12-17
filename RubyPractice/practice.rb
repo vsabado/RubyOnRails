@@ -1,7 +1,7 @@
 class MyClass
   def printLoop
     number = 3
-    number.times{puts "I love ruby"}
+    number.times {puts "I love ruby"}
   end
 
   def understandingEscape
@@ -41,6 +41,34 @@ class MyClass
     p (1..10).to_a.reverse.shuffle
   end
 
+  def arrayMethods()
+    a = (1..10).to_a
+    p a.methods #print out the list of methods available
+    p a
+    p "Is this array empty? #{a.empty?}"
+    puts "Length of this array is: #{a.length}"
+    p "First element of this array is #{a.first}"
+    p a.unshift("Vladimir") # Adds something to the front of the array
+    p a << "Vladimir" #Adds something to the end of the array. Alternatively, append or push
+    p a.uniq #This removes any repeating elements
+    p "Is Vladimir included in the array? #{a.include?("Vladimir")}"
+    p a.pop #LIFO, returns the last element as it removes it from the array
+    p a.join("-") #Alternatively a.join(), a.join(",")
+    p a.join("-").split("-") #Join them by "-" and then split them by "-" to create an entirely new array
+    p %w(Ruby is a very interesting language) #Creates an array out of the string
+    # p z = _ #grabs the last expression!
+  end
+
+  def arrayIterators()
+    a = ('a'..'z').to_a
+    a.each{ |nameMeAnything| print nameMeAnything + " "}
+    puts
+    a.each{ |nameMeAnything| print nameMeAnything.capitalize + " "}
+    puts
+    n = (1..100).to_a.shuffle
+    p n.select{|number| number.even?} #Only selects and then prints out even.
+  end
+
 
 end
 
@@ -64,3 +92,9 @@ c = MyClass.new
 
 #Working with range and array methods
 # c.understandingRange
+
+#Working with array methods
+# c.arrayMethods
+
+#Working with array iterators
+c.arrayIterators
