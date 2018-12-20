@@ -1,4 +1,5 @@
 class MyClass
+
   def printLoop
     number = 3
     number.times {puts "I love ruby"}
@@ -61,12 +62,51 @@ class MyClass
 
   def arrayIterators()
     a = ('a'..'z').to_a
-    a.each{ |nameMeAnything| print nameMeAnything + " "}
+    a.each {|nameMeAnything| print nameMeAnything + " "}
     puts
-    a.each{ |nameMeAnything| print nameMeAnything.capitalize + " "}
+    a.each {|nameMeAnything| print nameMeAnything.capitalize + " "}
     puts
     n = (1..100).to_a.shuffle
-    p n.select{|number| number.even?} #Only selects and then prints out even.
+    p n.select {|number| number.even?} #Only selects and then prints out even.
+  end
+
+  def understandingHash()
+    sampleHash = {'a' => 1, 'b' => 2, 'c' => 3}
+    someDetails = {'name' => 'vlad', 'favcolor' => 'red'}
+    p someDetails['name']
+    anotherHash = {a: 1, b: 2, c: 3} #Brush on Ruby symbols. symbols can be seen as identity and are often const: think column attributes in a database
+    p anotherHash
+    p sampleHash
+    p anotherHash[:a]
+    p anotherHash.keys
+    p anotherHash.values
+
+    anotherHash.each do |key,value|
+      puts "The class for key is #{key.class} and the value is #{value.class}"
+    end
+
+    sampleHash.each do |key,value|
+      puts "The class for key is #{key.class} and the value is #{value.class}"
+    end
+
+    #Changing values within the hash
+    anotherHash[:d] = "4"
+    p anotherHash
+
+    # sampleHash['d' => 4] There appears to be a problem with this syntax. Find out why
+    # p sampleHash
+
+    anotherHash.each { |someKey, someValue| puts "The key is #{someKey} and the value is #{someValue}"}
+    p anotherHash.select {|k,v| v.is_a?(String)}
+    p anotherHash.each { |k,v| anotherHash.delete(k) if v.is_a?(String)} #Deleting the key also deletes the value
+  end
+
+  def whileLoop
+    while true
+      puts "Press n to quit or any other key to conttinue: "
+      input = gets.chomp.downcase
+      break if input == "n" #Puts the break into one line. looks nice!
+    end
   end
 
 
@@ -81,7 +121,7 @@ c = MyClass.new
 #c.understandingEscape
 
 #User Input
-#c.askFirstName
+# c.askFirstName
 
 #if statements
 # c.testIf(!true)
@@ -97,4 +137,10 @@ c = MyClass.new
 # c.arrayMethods
 
 #Working with array iterators
-c.arrayIterators
+# c.arrayIterators
+
+#Working with hash
+# c.understandingHash
+
+#Understanding the syntax for while loop
+c.whileLoop
