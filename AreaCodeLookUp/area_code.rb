@@ -20,7 +20,7 @@ end
 # Get area code based on given hash and key
 def get_area_code(somehash, key)
 # Write code here
-puts somehash[key]
+somehash[key]
 end
 
 # Execution flow
@@ -29,8 +29,13 @@ while true #Alternatively you can use loop do
 puts "Would you like to look up the area code? (Y/N)"
 input = gets.chomp.downcase
 break if input != "y"
+puts "Choose a city from the list:"
 puts get_city_names(dial_book)
-puts "Choose a city"
 city = gets.chomp.downcase
-puts get_area_code(dial_book, city)
+if dial_book.include?(city)
+  puts "The area code for #{city} is #{get_area_code(dial_book, city)}"
+else
+  puts "You entered an invalid city"
+end
+
 end
