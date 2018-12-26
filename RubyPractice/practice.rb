@@ -74,7 +74,7 @@ class MyClass
     sampleHash = {'a' => 1, 'b' => 2, 'c' => 3}
     someDetails = {'name' => 'vlad', 'favcolor' => 'red'}
     p someDetails['name']
-    anotherHash = {a: 1, b: 2, c: 3} #Brush on Ruby symbols. symbols can be seen as identity and are often const: think column attributes in a database
+    anotherHash = {a: "1", b: "2", c: "3"} #Brush on Ruby symbols. symbols can be seen as identity and are often const: think column attributes in a database
     p anotherHash
     p sampleHash
     p anotherHash[:a]
@@ -103,7 +103,7 @@ class MyClass
 
   def whileLoop
     while true
-      puts "Press n to quit or any other key to conttinue: "
+      puts "Press n to quit or any other key to continue: "
       input = gets.chomp.downcase
       break if input == "n" #Puts the break into one line. looks nice!
     end
@@ -140,7 +140,7 @@ c = MyClass.new
 # c.arrayIterators
 
 #Working with hash
-# c.understandingHash
+ c.understandingHash
 
 #Understanding the syntax for while loop
-c.whileLoop
+# c.whileLoop
